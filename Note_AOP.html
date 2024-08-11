@@ -1,0 +1,68 @@
+
+
+AOP
+Aspect Oriented Programming
+
+concern 
+
+    Service
+        auth    => concern
+        business logic  => concern
+        logging  => concern
+
+
+    Auth is everywhere in code in entire web applications. Also logging and 
+    transaction management.
+
+    This is called cross-cutting concern.
+
+    AOP can solve cross-cutting concern.
+
+
+AOP Concepts
+
+        1.Aspect => For example=>Auth Aspect, Logging Aspect,Security
+
+        2.Join Point => Run in where contoller,where package,where class?
+            For example, all methods in ControllerA, some method in Controller B
+
+        3.Advice => what to do, For eg, "around","before" and "after" contains.
+
+            what means "Around"?
+
+                before  
+                    method
+                after
+
+            This is called "Around".
+
+        
+        4. Pointcut ======> AOP 
+
+            package com.xyz;
+
+            public class Pointcuts {
+            
+                @Pointcut("execution(public * *(..))")
+                public void publicMethod() {}
+            
+                @Pointcut("within(com.xyz.trading..*)")
+                public void inTrading() {}
+            
+                @Pointcut("publicMethod() && inTrading()")
+                public void tradingOperation() {}
+            }
+
+
+
+        AOP use for security,auth.
+        NOT FOR Logger and tracking.
+
+
+
+        5.After Throwing =>
+            Will do after got Exception
+
+        
+        6.After Retruning ==> Will do , after returning from functions,methods.
+        
